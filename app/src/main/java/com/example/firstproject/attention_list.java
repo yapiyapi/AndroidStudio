@@ -1,14 +1,13 @@
 package com.example.firstproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-public class frame_layout extends AppCompatActivity implements Button.OnClickListener{
+public class attention_list extends AppCompatActivity implements Button.OnClickListener{
 
 
     private View layout_red;
@@ -18,7 +17,7 @@ public class frame_layout extends AppCompatActivity implements Button.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_frame_layout);
+        setContentView(R.layout.activity_attention_list);
 
         this.InitializeView();
     }
