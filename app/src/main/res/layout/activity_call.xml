@@ -9,7 +9,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingBottom="24dp"
-    tools:context=".message">
+    tools:context=".call">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -51,8 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="1,000,000원"
-                android:textColor="#EA7A7A"
+                android:text="290,000원"
+                android:textColor="@color/가격"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
@@ -83,13 +83,14 @@
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/message_inquiry"
+        android:id="@+id/call_inquiry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#8B65BA"
+        android:background="@color/labang"
 
         android:padding="15dp"
-        android:text="문자문의"
+        android:text="전화문의"
+        android:textSize="16sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_marginLeft="20dp"

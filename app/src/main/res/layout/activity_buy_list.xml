@@ -8,7 +8,7 @@
     tools:context=".attention_list">
 
     <ImageView
-        android:id="@+id/back_btn_att_list"
+        android:id="@+id/back_btn_buy_list"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/back_button"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="관심목록"
+        android:text="문의내역"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +35,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_btn_att_list" />
+        app:layout_constraintTop_toBottomOf="@+id/back_btn_buy_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

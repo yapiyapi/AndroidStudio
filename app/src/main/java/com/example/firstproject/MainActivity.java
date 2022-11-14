@@ -1,103 +1,129 @@
 package com.example.firstproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    int start;
-    int end;
+//    private Dialog dialog;
+
+    ImageButton home_btn, lct_btn, inf_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Toast.makeText(MainActivity.this, "온크리에이트", Toast.LENGTH_SHORT).show();
-        ImageButton 계정이미지 = (ImageButton) this.findViewById(R.id.imagebtn_account);
-        TextView 로그인 = (TextView) this.findViewById(R.id.textview_login);
+        home_btn= (ImageButton) findViewById(R.id.home_btn);
+        lct_btn= (ImageButton) findViewById(R.id.location_btn);
+        inf_btn= (ImageButton) findViewById(R.id.information_btn);
 
-        //회원가입시 기입한 정보들 [sign_up -> main -> account]
-        //main 에서 sign_up 정보 수신
-        Intent 회원가입인텐트 = getIntent();
-        String 이름 = 회원가입인텐트.getStringExtra("이름");
-        String 이메일 = 회원가입인텐트.getStringExtra("이메일");
-        String 아이디 = 회원가입인텐트.getStringExtra("아이디");
-        String 비밀번호 = 회원가입인텐트.getStringExtra("비밀번호");
+        //회원가입할 때 받은 데이터 ( home <-> more_view )
+        Intent 회원가입데이터 = getIntent();
+        String 이름 = 회원가입데이터.getStringExtra("이름");
+        String 이메일 = 회원가입데이터.getStringExtra("이메일");
+        String 아이디 = 회원가입데이터.getStringExtra("아이디");
+        String 비밀번호 = 회원가입데이터.getStringExtra("비밀번호");
+        boolean 로그인여부 = 회원가입데이터.getBooleanExtra("로그인여부", false);
 
-        //로그인 여부 -> 로그인 textview 지우기
-        Intent 로그인여부 = getIntent();
-        boolean 로그인_bool = 로그인여부.getBooleanExtra("로그인여부",false);
-        if (로그인_bool==true) 로그인.setVisibility(View.INVISIBLE);
+        Bundle 번들 = new Bundle();
+        home home = new home();
+        번들.putString("아이디", 아이디);
+        번들.putString("비밀번호", 비밀번호);
+        번들.putString("이름", 이름);
+        번들.putString("이메일", 이메일);
+        번들.putBoolean("로그인여부", 로그인여부);
+        home.setArguments(번들);
 
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frameLayout,home);
+        transaction.addToBackStack(null);
+        transaction.commit();
 
-        //계정이미지 버튼 [오른쪽 상단]
-        계정이미지.setOnClickListener(new View.OnClickListener() {
+        //하단 navigation bar 버튼 [home]
+        home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, account.class);
-                intent.putExtra("url","www.naver.com");
-                intent.putExtra("이름",이름);
-                intent.putExtra("이메일",이메일);
-                intent.putExtra("아이디",아이디);
-                intent.putExtra("비밀번호",비밀번호);
-                startActivity(intent);
+                Bundle 번들 = new Bundle();
+                home home = new home();
+                번들.putString("아이디", 아이디);
+                번들.putString("비밀번호", 비밀번호);
+                번들.putString("이름", 이름);
+                번들.putString("이메일", 이메일);
+                번들.putBoolean("로그인여부", 로그인여부);
+                home.setArguments(번들);
+
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameLayout,home);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
-
-        //로그인 text [오른쪽 상단]
-        로그인.setOnClickListener(new View.OnClickListener() {
+        //하단 navigation bar 버튼 [location 지도]
+        lct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, login.class);
-                startActivity(intent);
+                showMap(Uri.parse("geo:47.6,-122.3"));
             }
         });
+        //하단 navigation bar 버튼 [더보기]
+        inf_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle 번들 = new Bundle();
+                View_more 더보기 = new View_more();
+                번들.putString("아이디", 아이디);
+                번들.putString("비밀번호", 비밀번호);
+                번들.putString("이름", 이름);
+                번들.putString("이메일", 이메일);
+                번들.putBoolean("로그인여부", 로그인여부);
+                더보기.setArguments(번들);
 
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameLayout, 더보기);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
     }
-//
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        Toast.makeText(MainActivity.this, "온스타트", Toast.LENGTH_SHORT).show();
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Toast.makeText(MainActivity.this, "온리줌", Toast.LENGTH_SHORT).show();
-//        end = (int) System.currentTimeMillis();
-//        if (start == 0){}
-//        else Toast.makeText(MainActivity.this, ""+(end-start)+"ms", Toast.LENGTH_SHORT).show();
-//    }
+
+
+
+    public void showMap(Uri geoLocation) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(geoLocation);
+        startActivity(intent);
+    }
+
 //
 //    @Override
 //    protected void onRestart() {
 //        super.onRestart();
-//        Toast.makeText(MainActivity.this, "온리스타트", Toast.LENGTH_SHORT).show();
-//    }
 //
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        Toast.makeText(MainActivity.this, "온퍼즈", Toast.LENGTH_SHORT).show();
-//    }
+//        dialog = new Dialog(MainActivity.this);
 //
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        Toast.makeText(getApplicationContext(), "온스탑", Toast.LENGTH_SHORT).show();
-//        start = (int) System.currentTimeMillis(); // start = 시작시간 - 1970년
-//    }
+//        //인플레이션
+//        dialog.setContentView(R.layout.activity_dialog);
 //
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        Toast.makeText(MainActivity.this, "온디스트로이", Toast.LENGTH_SHORT).show();
+//        Button button2 = (Button)dialog.findViewById(R.id.button2);
+//
+//        button2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dialog.dismiss();
+//            }
+//        });
+//        dialog.setCanceledOnTouchOutside(false);
+//        dialog.show();
 //    }
 }

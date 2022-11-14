@@ -1,38 +1,50 @@
 package com.example.firstproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class account extends AppCompatActivity {
+public class account extends Fragment {
 
+
+    private String 이름 = null;
+    private String 이메일 = null;
+    private String 아이디 = null;
+    private String 비밀번호 = null;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
 
 
-        Button 아이디수정 = (Button) this.findViewById(R.id.아이디수정);
-        Button 닉네임수정 = (Button) this.findViewById(R.id.닉네임수정);
-        Button 이메일수정 = (Button) this.findViewById(R.id.이메일수정);
-        TextView 아이디텍스트 = (TextView) this.findViewById(R.id.textview_id);
-        TextView 닉네임텍스트 = (TextView) this.findViewById(R.id.textview_name);
-        TextView 이메일텍스트 = (TextView) this.findViewById(R.id.textview_email);
-        EditText 아이디에딧텍스트 = (EditText) this.findViewById(R.id.edittext_id);
-        EditText 닉네임에딧텍스트 = (EditText) this.findViewById(R.id.edittext_name);
-        EditText 이메일에딧텍스트 = (EditText) this.findViewById(R.id.edittext_email);
+        if (getArguments()!=null) {
+            //main으로 부터 데이터 수신
+            이름 = getArguments().getString("이름");
+            이메일 = getArguments().getString("이메일");
+            아이디 = getArguments().getString("아이디");
+        }
 
-        //main으로 부터 데이터 수신
-        Intent 계정정보 = getIntent();
+        Button 아이디수정 = (Button) view.findViewById(R.id.아이디수정);
+        Button 닉네임수정 = (Button) view.findViewById(R.id.닉네임수정);
+        Button 이메일수정 = (Button) view.findViewById(R.id.이메일수정);
+        TextView 아이디텍스트 = (TextView) view.findViewById(R.id.textview_id);
+        TextView 닉네임텍스트 = (TextView) view.findViewById(R.id.textview_name);
+        TextView 이메일텍스트 = (TextView) view.findViewById(R.id.textview_email);
+        EditText 아이디에딧텍스트 = (EditText) view.findViewById(R.id.edittext_id);
+        EditText 닉네임에딧텍스트 = (EditText) view.findViewById(R.id.edittext_name);
+        EditText 이메일에딧텍스트 = (EditText) view.findViewById(R.id.edittext_email);
 
-        String 아이디 = 계정정보.getStringExtra("아이디");
-        String 이름 = 계정정보.getStringExtra("이름");
-        String 이메일 = 계정정보.getStringExtra("이메일");
+        TextView 로그아웃 = (TextView) view.findViewById(R.id.textview_logout);
 
         아이디텍스트.setText(아이디);
         닉네임텍스트.setText(이름);
@@ -93,43 +105,17 @@ public class account extends AppCompatActivity {
             }
         });
 
-        TextView 로그아웃 = (TextView) this.findViewById(R.id.textview_logout);
+
         로그아웃.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                intent.putExtra("로그인여부",false);
                 startActivity(intent);
             }
         });
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
+        return view;
     }
 }
