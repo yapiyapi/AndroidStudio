@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class call extends AppCompatActivity {
+public class Activity_CallInquiry extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_call);
+        setContentView(R.layout.activity_call_inquiry);
 
         Button 전화문의 = (Button) this.findViewById(R.id.call_inquiry);
 

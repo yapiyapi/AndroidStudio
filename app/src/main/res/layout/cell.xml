@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="207dp"
+    android:padding="10dp"
+    android:id="@+id/cell_linear"
+    android:orientation="horizontal"
+    android:background="?attr/selectableItemBackground">
+
+
+    <ImageView
+        android:id="@+id/cell_imageview"
+        android:layout_width="130dp"
+        android:layout_height="187dp"
+        app:srcCompat="@drawable/dabang" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:paddingStart="30dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Title_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:text="제목"
+            android:maxLines="1"
+            android:ellipsize ="end"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/Location_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="해운대구 반여동"
+            android:maxLines="1"
+            android:ellipsize ="end"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/Apart_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="센텀 롯데 캐슬 아파트"
+            android:maxLines="1"
+            android:ellipsize ="end"
+            android:textSize="13sp" />
+        <TextView
+            android:id="@+id/PriceInMonth_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="가격"
+            android:maxLines="1"
+            android:ellipsize ="end"
+            android:textSize="18sp"
+            android:textColor="@color/가격"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/favorite_empty"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@drawable/favorite_empty" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
+
+        <ImageView
+            android:id="@+id/sub_menu"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/sub_menu" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>

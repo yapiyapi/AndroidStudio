@@ -12,9 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class View_more extends Fragment {
+public class Fragment_ViewMore extends Fragment {
 
     private String 이름 = null;
     private String 이메일 = null;
@@ -62,7 +61,7 @@ public class View_more extends Fragment {
                 //로그인 했으면 account fragment로 이동
                 if (로그인여부==true){
                     Bundle 번들 = new Bundle();
-                    account 계정화면 = new account();
+                    Fragment_Account 계정화면 = new Fragment_Account();
                     번들.putString("이름",이름);
                     번들.putString("이메일",이메일);
                     번들.putString("아이디",아이디);
@@ -77,7 +76,7 @@ public class View_more extends Fragment {
                 }
                 //로그인 안했으면 login Activity로 이동
                 else{
-                    Intent intent = new Intent(getActivity(), login.class);
+                    Intent intent = new Intent(getActivity(), Activity_Login.class);
                     intent.putExtra("이름",이름);
                     intent.putExtra("이메일",이메일);
                     intent.putExtra("아이디",아이디);
@@ -93,7 +92,7 @@ public class View_more extends Fragment {
                 //로그인 했으면 account fragment로 이동
                 if (로그인여부==true){
                     Bundle 번들 = new Bundle();
-                    account 계정화면 = new account();
+                    Fragment_Account 계정화면 = new Fragment_Account();
                     번들.putString("이름",이름);
                     번들.putString("이메일",이메일);
                     번들.putString("아이디",아이디);
@@ -108,7 +107,7 @@ public class View_more extends Fragment {
                 }
                 //로그인 안했으면 login Activity로 이동
                 else{
-                    Intent intent = new Intent(getActivity(), login.class);
+                    Intent intent = new Intent(getActivity(), Activity_Login.class);
                     intent.putExtra("이름",이름);
                     intent.putExtra("이메일",이메일);
                     intent.putExtra("아이디",아이디);
@@ -123,7 +122,7 @@ public class View_more extends Fragment {
                 //로그인 했으면 account fragment로 이동
                 if (로그인여부==true){
                     Bundle 번들 = new Bundle();
-                    account 계정화면 = new account();
+                    Fragment_Account 계정화면 = new Fragment_Account();
                     번들.putString("이름",이름);
                     번들.putString("이메일",이메일);
                     번들.putString("아이디",아이디);
@@ -138,7 +137,7 @@ public class View_more extends Fragment {
                 }
                 //로그인 안했으면 login Activity로 이동
                 else{
-                    Intent intent = new Intent(getActivity(), login.class);
+                    Intent intent = new Intent(getActivity(), Activity_Login.class);
                     intent.putExtra("이름",이름);
                     intent.putExtra("이메일",이메일);
                     intent.putExtra("아이디",아이디);
@@ -154,35 +153,35 @@ public class View_more extends Fragment {
         판매내역.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (로그인여부==false) Toast.makeText(getActivity(), "로그인 후 사용바랍니다.", Toast.LENGTH_SHORT).show();
-                else {
-                    Intent intent = new Intent(getActivity(), sell_list.class);
+//                if (로그인여부==false) Toast.makeText(getActivity(), "로그인 후 사용바랍니다.", Toast.LENGTH_SHORT).show();
+//                else {
+                    Intent intent = new Intent(getActivity(), Activity_ListSell.class);
                     startActivity(intent);
                 }
-            }
+//            }
         });
 
         //구매내역 ----------------
         구매내역.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (로그인여부==false) Toast.makeText(getActivity(), "로그인 후 사용바랍니다.", Toast.LENGTH_SHORT).show();
-                else {
-                    Intent intent = new Intent(getActivity(), buy_list.class);
+//                if (로그인여부==false) Toast.makeText(getActivity(), "로그인 후 사용바랍니다.", Toast.LENGTH_SHORT).show();
+//                else {
+                    Intent intent = new Intent(getActivity(), Activity_ListBuy.class);
                     startActivity(intent);
                 }
-            }
+//            }
         });
 
         //관심목록 (hart) ----------------
         관심목록.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (로그인여부==false) Toast.makeText(getActivity(), "로그인 후 사용바랍니다.", Toast.LENGTH_SHORT).show();
-                else {
-                    Intent intent = new Intent(getActivity(), attention_list.class);
+//                if (로그인여부==false) Toast.makeText(getActivity(), "로그인 후 사용바랍니다.", Toast.LENGTH_SHORT).show();
+//                else {
+                    Intent intent = new Intent(getActivity(), Activity_ListHart.class);
                     startActivity(intent);
-                }
+//                }
             }
         });
 

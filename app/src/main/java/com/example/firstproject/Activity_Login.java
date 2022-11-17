@@ -1,7 +1,6 @@
 package com.example.firstproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class login extends AppCompatActivity {
+public class Activity_Login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +70,7 @@ public class login extends AppCompatActivity {
         회원가입.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( view.getContext() , sign_up.class);
+                Intent intent = new Intent( view.getContext() , Activity_SignUp.class);
                 startActivity(intent);
             }
         });

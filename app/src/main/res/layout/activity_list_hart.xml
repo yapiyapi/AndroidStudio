@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".attention_list">
+    android:padding="16dp"
+    tools:context=".Activity_ListHart">
 
     <ImageView
-        android:id="@+id/back_btn_buy_list"
+        android:id="@+id/back_btn_att_list"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/back_button"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
@@ -22,19 +23,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:text="문의내역"
+        android:text="관심목록"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recy_att"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_btn_buy_list" />
+        app:layout_constraintTop_toBottomOf="@+id/back_btn_att_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

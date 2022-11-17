@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home">
+    tools:context=".Fragment_Home">
 
     <TextView
         android:id="@+id/라방_제목"
@@ -83,5 +83,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <ImageButton
+        android:id="@+id/plus_btn_home"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/round_imagebtn"
+        android:scaleType="centerInside"
+        android:src="@drawable/plus_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

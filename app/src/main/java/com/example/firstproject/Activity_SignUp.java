@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class sign_up extends AppCompatActivity {
+public class Activity_SignUp extends AppCompatActivity {
 
     private String 이름 = null;
 
@@ -34,7 +34,7 @@ public class sign_up extends AppCompatActivity {
         회원가입버튼.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( view.getContext() , login.class);
+                Intent intent = new Intent( view.getContext() , Activity_Login.class);
                 //home 으로 보낼 데이터
                 intent.putExtra("이름", 이름_t.getText().toString());
                 intent.putExtra("이메일", 이메일_t.getText().toString());

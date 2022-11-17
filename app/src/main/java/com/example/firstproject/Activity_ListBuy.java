@@ -4,27 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
-public class attention_list extends AppCompatActivity {
+public class Activity_ListBuy extends AppCompatActivity {
 
-    View back_btn_att_list;
-
+    View back_btn_buy_list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attention_list);
+        setContentView(R.layout.activity_list_buy);
 
-        back_btn_att_list = (View)this.findViewById(R.id.back_btn_att_list);
+        back_btn_buy_list = (View)this.findViewById(R.id.back_btn_buy_list);
 
         //뒤로 가기 버튼 [왼쪽 상단]
-        back_btn_att_list.setOnClickListener(new View.OnClickListener() {
+        back_btn_buy_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-
     }
 }

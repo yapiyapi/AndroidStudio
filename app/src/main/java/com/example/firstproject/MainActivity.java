@@ -3,14 +3,11 @@ package com.example.firstproject;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         boolean 로그인여부 = 회원가입데이터.getBooleanExtra("로그인여부", false);
 
         Bundle 번들 = new Bundle();
-        home home = new home();
+        Fragment_Home home = new Fragment_Home();
         번들.putString("아이디", 아이디);
         번들.putString("비밀번호", 비밀번호);
         번들.putString("이름", 이름);
@@ -54,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Bundle 번들 = new Bundle();
-                home home = new home();
+                Fragment_Home home = new Fragment_Home();
                 번들.putString("아이디", 아이디);
                 번들.putString("비밀번호", 비밀번호);
                 번들.putString("이름", 이름);
@@ -80,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Bundle 번들 = new Bundle();
-                View_more 더보기 = new View_more();
+                Fragment_ViewMore 더보기 = new Fragment_ViewMore();
                 번들.putString("아이디", 아이디);
                 번들.putString("비밀번호", 비밀번호);
                 번들.putString("이름", 이름);
