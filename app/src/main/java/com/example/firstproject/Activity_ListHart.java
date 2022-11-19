@@ -23,7 +23,7 @@ public class Activity_ListHart extends AppCompatActivity {
         Adapter_ListHart 어댑터;
         LinearLayoutManager 레이아웃매니저;
 
-        리싸이클러뷰 = (RecyclerView) this.findViewById(R.id.recy_att);
+        리싸이클러뷰 = (RecyclerView) this.findViewById(R.id.att_recy);
         레이아웃매니저 = new LinearLayoutManager(this);
         어댑터 = new Adapter_ListHart();
         리싸이클러뷰.setLayoutManager(레이아웃매니저);

@@ -8,6 +8,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -89,11 +93,11 @@ public class MainActivity extends AppCompatActivity {
                 transaction.replace(R.id.frameLayout, 더보기);
                 transaction.addToBackStack(null);
                 transaction.commit();
+
             }
         });
 
     }
-
 
 
     public void showMap(Uri geoLocation) {

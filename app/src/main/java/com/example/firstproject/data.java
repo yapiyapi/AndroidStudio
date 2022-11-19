@@ -4,10 +4,11 @@ import android.net.Uri;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class data {
-    private static Uri uri_data = Uri.parse(String.valueOf(R.drawable.dabang));
+    private static Uri uri_data = Uri.parse("android.resource://com.example.firstproject/" + R.drawable.dabang);
     static ArrayList<Uri> 이미지_arr = new ArrayList<Uri>(Arrays.asList(
             uri_data,uri_data,uri_data,uri_data,uri_data));
     static ArrayList<String> 제목_arr = new ArrayList<>(Arrays.asList(
@@ -22,6 +23,8 @@ public class data {
             "안녕하세요","안녕하세요","안녕하세요","안녕하세요","안녕하세요"));
     static ArrayList<Boolean> 관심여부_arr = new ArrayList<>(Arrays.asList(
             false,false,false,false,false));
-    static ArrayList<Boolean> 작성여부_arr = new ArrayList<>(Arrays.asList(
-            false,false,false,false,false));
+    static ArrayList<String> 판매상태_arr = new ArrayList<>(Arrays.asList(
+            "","","","",""));
+    static ArrayList<String> 식별부호_arr = new ArrayList<>(Arrays.asList(
+            "","","","",""));
 }

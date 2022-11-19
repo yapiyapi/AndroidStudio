@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,9 @@ public class Activity_ListSell extends AppCompatActivity {
     private Button hide_btn;
     private View back_btn_sell_list;
     //어댑터 변수
-    Adapter_ListSell 어댑터;
+    Adapter_List_Sell 어댑터_판매중;
+    Adapter_List_SoldOut 어댑터_판매완료;
+    Adapter_List_Hide 어댑터_숨김;
     LinearLayoutManager 레이아웃매니저;
 
 
@@ -42,49 +45,74 @@ public class Activity_ListSell extends AppCompatActivity {
         /** --------어댑터 설정 ---------**/
         //어댑터 및 레이아웃매니저 생성
         레이아웃매니저 = new LinearLayoutManager(this);
-        어댑터 = new Adapter_ListSell();
+        어댑터_판매중 = new Adapter_List_Sell();
         sell_recy.setLayoutManager(레이아웃매니저);
-        sell_recy.setAdapter(어댑터);
+        sell_recy.setAdapter(어댑터_판매중);
         /** --------버튼 설정 ---------**/
         // 리사이클러뷰 onclick시 화면전환
-        어댑터.setOnItemClickListener(new Adapter_ListSell.OnItemClickListener() {
+        어댑터_판매중.setOnItemClickListener(new Adapter_List_Sell.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 Intent intent = new Intent( Activity_ListSell.this , Activity_CallInquiry.class);
                 startActivity(intent);
             }
         }) ;
-
-        sell_btn.setOnClickListener(new View.OnClickListener() {
+        /** -------- 프레임 설정 ---------**/
+        sell_btn.setOnClickListener(new View.OnClickListener() {  //판매중
             @Override
             public void onClick(View view) {
+                //상단바 글씨 크기
+                sell_btn.setTextSize(16); sell_btn.setTypeface(null, Typeface.BOLD);
+                sold_out_btn.setTextSize(14); sold_out_btn.setTypeface(null, Typeface.NORMAL);
+                hide_btn.setTextSize(14); hide_btn.setTypeface(null, Typeface.NORMAL);
+                //프레임 Visible
                 sell_recy.setVisibility(View.VISIBLE);
                 sold_out_recy.setVisibility(View.INVISIBLE);
                 hide_recy.setVisibility(View.INVISIBLE);
-                //
+                //어댑터 연결
                 레이아웃매니저 = new LinearLayoutManager(view.getContext());
-                어댑터 = new Adapter_ListSell();
+                어댑터_판매중 = new Adapter_List_Sell();
                 sell_recy.setLayoutManager(레이아웃매니저);
-                sell_recy.setAdapter(어댑터);
+                sell_recy.setAdapter(어댑터_판매중);
             }
         });
-        sold_out_btn.setOnClickListener(new View.OnClickListener() {
+        sold_out_btn.setOnClickListener(new View.OnClickListener() {  //판매완료
             @Override
             public void onClick(View view) {
+                //상단바 글씨 크기
+                sell_btn.setTextSize(14); sell_btn.setTypeface(null, Typeface.NORMAL);
+                sold_out_btn.setTextSize(16); sold_out_btn.setTypeface(null, Typeface.BOLD);
+                hide_btn.setTextSize(14); hide_btn.setTypeface(null, Typeface.NORMAL);
+                //프레임 Visible
                 sell_recy.setVisibility(View.INVISIBLE);
                 sold_out_recy.setVisibility(View.VISIBLE);
                 hide_recy.setVisibility(View.INVISIBLE);
+                //어댑터 연결
+                레이아웃매니저 = new LinearLayoutManager(view.getContext());
+                어댑터_판매완료 = new Adapter_List_SoldOut();
+                sold_out_recy.setLayoutManager(레이아웃매니저);
+                sold_out_recy.setAdapter(어댑터_판매완료);
             }
         });
-        hide_btn.setOnClickListener(new View.OnClickListener() {
+        hide_btn.setOnClickListener(new View.OnClickListener() {  //숨김
             @Override
             public void onClick(View view) {
+                //상단바 글씨 크기
+                sell_btn.setTextSize(14); sell_btn.setTypeface(null, Typeface.NORMAL);
+                sold_out_btn.setTextSize(14); sold_out_btn.setTypeface(null, Typeface.NORMAL);
+                hide_btn.setTextSize(16); hide_btn.setTypeface(null, Typeface.BOLD);
+                //프레임 Visible
                 sell_recy.setVisibility(View.INVISIBLE);
                 sold_out_recy.setVisibility(View.INVISIBLE);
                 hide_recy.setVisibility(View.VISIBLE);
+                //어댑터 연결
+                레이아웃매니저 = new LinearLayoutManager(view.getContext());
+                어댑터_숨김 = new Adapter_List_Hide();
+                hide_recy.setLayoutManager(레이아웃매니저);
+                hide_recy.setAdapter(어댑터_숨김);
             }
         });
-
+        /**----------------**/
         //뒤로 가기 버튼 [왼쪽 상단]
         back_btn_sell_list.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,13 +125,11 @@ public class Activity_ListSell extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //새로고침
-        /** --------어댑터 설정 ---------**/
-        //어댑터 및 레이아웃매니저 생성
-        레이아웃매니저 = new LinearLayoutManager(this);
-        어댑터 = new Adapter_ListSell();
-        sell_recy.setLayoutManager(레이아웃매니저);
-        sell_recy.setAdapter(어댑터);
+        //새로고침 (수정되고 난 후 다시 activity 돌아왔을 때)
+//        레이아웃매니저 = new LinearLayoutManager(this);
+//        어댑터_판매중 = new Adapter_List_Sell();
+//        sell_recy.setLayoutManager(레이아웃매니저);
+//        sell_recy.setAdapter(어댑터_판매중);
     }
 
 }
