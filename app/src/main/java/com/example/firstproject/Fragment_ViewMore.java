@@ -179,7 +179,7 @@ public class Fragment_ViewMore extends Fragment {
             public void onClick(View view) {
 //                if (로그인여부==false) Toast.makeText(getActivity(), "로그인 후 사용바랍니다.", Toast.LENGTH_SHORT).show();
 //                else {
-                    Intent intent = new Intent(getActivity(), Activity_ListHart_listview.class);
+                    Intent intent = new Intent(getActivity(), Activity_ListHart.class);
                     startActivity(intent);
 //                }
             }

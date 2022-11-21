@@ -9,6 +9,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,12 +39,18 @@ public class Activity_Post extends AppCompatActivity {
     TextView 가격;
     TextView 내용;
 
+//    SharedPreferences 셰어드순서 = getSharedPreferences("셰어드순서", MODE_PRIVATE);
+//    SharedPreferences.Editor 셰어드순서_editor = 셰어드순서.edit();
+
     Uri uri = null;
     Uri uri_data = Uri.parse("android.resource://com.example.firstproject/" + R.drawable.dabang);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+        /**   초기화   **/
+//        셰어드순서_editor.putInt("셰어드순서",0);
+//        int 최종위치_1 = 셰어드순서.getInt("셰어드순서",0);
 
         back_btn_reg = (ImageView)this.findViewById(R.id.back_btn_reg);
         완료 = (TextView)this.findViewById(R.id.post_reg);
@@ -53,6 +60,8 @@ public class Activity_Post extends AppCompatActivity {
         건물명 = (TextView)this.findViewById(R.id.building_reg);
         가격 = (TextView)this.findViewById(R.id.price_reg);
         내용 = (TextView)this.findViewById(R.id.contents_reg);
+
+
         /** 판매중 데이터 중 몇번째 데이터인지 확인 ( fr. Adapter_ListSell )**/
         //수정시 받을 위치 데이터 ( fr. Adapter_ListSell )
         Intent 수정인텐트 = getIntent();
@@ -87,19 +96,36 @@ public class Activity_Post extends AppCompatActivity {
             public void onClick(View view) {
                 //완료 (게시하기)
                 if(완료.getText()!="수정"){
-                    if (uri != null) data.이미지_arr.add(0,uri);
-                    else data.이미지_arr.add(0,uri_data);
-                    data.제목_arr.add(0,제목.getText().toString());
-                    data.건물_arr.add(0,건물명.getText().toString());
-                    data.위치_arr.add(0,위치.getText().toString());
-                    data.가격_arr.add(0,가격.getText().toString());
-                    data.내용_arr.add(0,내용.getText().toString());
-                    data.관심여부_arr.add(0,false);
-                    data.판매상태_arr.add(0,"판매중");
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        data.식별부호_arr.add(0, CurrentTime());
+                    if ( uri == null ) Toast.makeText(Activity_Post.this, "이미지를 추가 해주세요.", Toast.LENGTH_SHORT).show();
+                    else {
+                        data.이미지_arr.add(0,uri);
+                        data.제목_arr.add(0,제목.getText().toString());
+                        data.위치_arr.add(0,위치.getText().toString());
+                        data.건물_arr.add(0,건물명.getText().toString());
+                        data.가격_arr.add(0,가격.getText().toString());
+                        data.내용_arr.add(0,내용.getText().toString());
+                        data.관심여부_arr.add(0,false);
+                        data.판매상태_arr.add(0,"판매중");
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            data.식별부호_arr.add(0, CurrentTime());
+                        }
+//                        //완료할 때마다 셰어드순서에 1 추가
+//                        셰어드순서_editor.putInt("셰어드순서",셰어드순서.getInt("셰어드순서",0)+1);
+//                        //셰어드 이름 = 자기 순서 값 ( 고유번호 )
+//                        SharedPreferences sf = getSharedPreferences(""+셰어드순서.getInt("셰어드순서",0), MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = sf.edit();
+//                        //데이터
+//                        editor.putString("이미지", uri.toString());
+//                        editor.putString("제목", 제목.getText().toString());
+//                        editor.putString("위치", 위치.getText().toString());
+//                        editor.putString("건물명",건물명.getText().toString());
+//                        editor.putString("가격", 가격.getText().toString());
+//                        editor.putString("내용", 내용.getText().toString());
+//                        editor.putBoolean("관심여부", false);
+//                        editor.putString("판매상태", "판매중");
+                        //activity 종료
+                        finish();
                     }
-                    finish();
                 }
                 //수정 (수정하기)
                 else{
@@ -137,7 +163,10 @@ public class Activity_Post extends AppCompatActivity {
                     {
                         Intent intent = result.getData();
                         uri = intent.getData();
-                        이미지.setImageURI(uri);
+                        Glide.with(Activity_Post.this)
+                                .load(uri)
+                                .into(이미지);
+
                     }
                 }
             });

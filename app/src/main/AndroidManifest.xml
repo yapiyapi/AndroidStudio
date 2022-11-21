@@ -33,9 +33,7 @@
         <activity
             android:name=".Activity_Post"
             android:exported="true"
-            android:grantUriPermissions="true"
-            android:readPermission="de.test.READ_DATABASE"
-            android:writePermission="de.test.WRITE_DATABASE">
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

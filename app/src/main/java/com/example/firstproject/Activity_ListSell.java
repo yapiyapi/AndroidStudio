@@ -74,6 +74,15 @@ public class Activity_ListSell extends AppCompatActivity {
                 어댑터_판매중 = new Adapter_List_Sell();
                 sell_recy.setLayoutManager(레이아웃매니저);
                 sell_recy.setAdapter(어댑터_판매중);
+                /** --------버튼 설정 ---------**/
+                // 리사이클러뷰 onclick시 화면전환
+                어댑터_판매중.setOnItemClickListener(new Adapter_List_Sell.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View v, int position) {
+                        Intent intent = new Intent( Activity_ListSell.this , Activity_CallInquiry.class);
+                        startActivity(intent);
+                    }
+                }) ;
             }
         });
         sold_out_btn.setOnClickListener(new View.OnClickListener() {  //판매완료
@@ -92,6 +101,15 @@ public class Activity_ListSell extends AppCompatActivity {
                 어댑터_판매완료 = new Adapter_List_SoldOut();
                 sold_out_recy.setLayoutManager(레이아웃매니저);
                 sold_out_recy.setAdapter(어댑터_판매완료);
+                /** --------버튼 설정 ---------**/
+                // 리사이클러뷰 onclick시 화면전환
+                어댑터_판매완료.setOnItemClickListener(new Adapter_List_SoldOut.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View v, int position) {
+                        Intent intent = new Intent( Activity_ListSell.this , Activity_CallInquiry.class);
+                        startActivity(intent);
+                    }
+                }) ;
             }
         });
         hide_btn.setOnClickListener(new View.OnClickListener() {  //숨김
@@ -110,6 +128,15 @@ public class Activity_ListSell extends AppCompatActivity {
                 어댑터_숨김 = new Adapter_List_Hide();
                 hide_recy.setLayoutManager(레이아웃매니저);
                 hide_recy.setAdapter(어댑터_숨김);
+                /** --------버튼 설정 ---------**/
+                // 리사이클러뷰 onclick시 화면전환
+                어댑터_숨김.setOnItemClickListener(new Adapter_List_Hide.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View v, int position) {
+                        Intent intent = new Intent( Activity_ListSell.this , Activity_CallInquiry.class);
+                        startActivity(intent);
+                    }
+                }) ;
             }
         });
         /**----------------**/

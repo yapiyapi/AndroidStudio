@@ -125,6 +125,7 @@ public class Activity_ListHart_listview extends AppCompatActivity {
                 view = (View) convertView;
             }
 
+
             제목 = (TextView) convertView.findViewById(R.id.Title_btn);
             지역 = (TextView) convertView.findViewById(R.id.Location_btn);
             아파트 = (TextView) convertView.findViewById(R.id.Apart_btn);
@@ -134,12 +135,38 @@ public class Activity_ListHart_listview extends AppCompatActivity {
             메뉴 = (ImageView) convertView.findViewById(R.id.sub_menu);
 
 
-            //값 초기화
-            Glide.with(context).load(이미지_arr.get(position)).into(이미지);
-            제목.setText(제목_arr.get(position));
-            지역.setText(위치_arr.get(position));
-            아파트.setText(건물_arr.get(position));
-            가격.setText(가격_arr.get(position));
+            //위치 값 초기화 (관심여부복사본_arr)
+            int true_위치 = 관심여부복사본_arr.indexOf(true);
+            if (true_위치 != -1) {
+                관심여부복사본_arr.set(true_위치, false);
+
+                //값 초기화
+                Glide.with(context).load(이미지_arr.get(position)).into(이미지);
+                제목.setText(제목_arr.get(position));
+                지역.setText(위치_arr.get(position));
+                아파트.setText(건물_arr.get(position));
+                가격.setText(가격_arr.get(position));
+                boolean 관심_초기화 = 관심여부_arr.get(true_위치);
+                if (관심_초기화) 하트.setImageResource(R.drawable.favorite);
+                else 하트.setImageResource(R.drawable.favorite_empty);
+                /** 버튼 **/
+                //하트 눌릴 때
+                하트.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        boolean 관심 = 관심여부_arr.get(true_위치);
+                        if (!관심) {                                            // false
+                            하트.setImageResource(R.drawable.favorite);
+                            관심여부_arr.set(true_위치, true);
+                        } else {                                               //true
+                            하트.setImageResource(R.drawable.favorite_empty);
+                            관심여부_arr.set(true_위치, false);
+                        }
+                    }
+                });
+            }else ;
+
+
 
             //각 아이템 선택 event
             convertView.setOnClickListener(new View.OnClickListener() {

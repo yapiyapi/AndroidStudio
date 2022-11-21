@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,8 +59,8 @@ public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.CustomViewHo
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-
-        int pos=0;
+        //최종위치 구하기 로직
+        int pos;
         // 둘 다 있을 때
         if (판매상태복사본_arr.indexOf("판매중")!=-1 && 판매상태복사본_arr.indexOf("")!=-1) {
             if (판매상태복사본_arr.indexOf("판매중") < 판매상태복사본_arr.indexOf("")) {
@@ -102,6 +103,10 @@ public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.CustomViewHo
             }
         });
 
+    }
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     @Override

@@ -1,8 +1,12 @@
 package com.example.firstproject;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +26,8 @@ import java.util.Collections;
 
 public class Adapter_List_Sell extends RecyclerView.Adapter<Adapter_List_Sell.CustomViewHolder> {
 
+
+
     ArrayList<Uri> 이미지_arr = data.이미지_arr;
     ArrayList<String> 제목_arr = data.제목_arr;
     ArrayList<String> 위치_arr = data.위치_arr;
@@ -32,6 +38,8 @@ public class Adapter_List_Sell extends RecyclerView.Adapter<Adapter_List_Sell.Cu
     ArrayList<String> 판매상태_arr = data.판매상태_arr;
     ArrayList<String> 판매상태복사본_arr = (ArrayList<String>) 판매상태_arr.clone();
     ArrayList<String> 식별부호_arr = data.식별부호_arr;
+
+
 
     //  --------------------------onclick --------------
     private OnItemClickListener mListener = null ;
@@ -49,11 +57,28 @@ public class Adapter_List_Sell extends RecyclerView.Adapter<Adapter_List_Sell.Cu
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View 뷰 = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell, parent,false);
+        Log.i("onCreateViewHolder","onCreateViewHolder");
         return new CustomViewHolder(뷰);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
+
+        Log.i("onBind","onBind");
+
+////        SharedPreferences 셰어드순서 = holder.itemView.getContext().getSharedPreferences("셰어드순서", MODE_PRIVATE);
+////        int size = 셰어드순서.getInt("셰어드순서",0);
+////        for (int i =0 ; i< size ; i++){
+////            SharedPreferences 각각데이터 = holder.itemView.getContext().getSharedPreferences(""+size , MODE_PRIVATE);
+////            if
+////            각각데이터.getString("판매상태","해당사항 없음");
+////        }
+//        //최종위치 구하기
+//        SharedPreferences 각각데이터 = holder.itemView.getContext().getSharedPreferences(""+position+1 , MODE_PRIVATE);
+//        String 판매상태 = 각각데이터.getString("판매상태","해당사항 없음");
+//        if (판매상태 !="판매중") return;
+
+
         // 판매상태 check
         int true_위치 = 판매상태복사본_arr.indexOf("판매중");
         if (true_위치 != -1) {
