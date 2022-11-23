@@ -54,11 +54,14 @@ public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.CustomViewHo
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View 뷰 = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell, parent,false);
+        Log.i("onCreateViewHolder","onCreateViewHolder");
         return new CustomViewHolder(뷰);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
+        Log.i("onBind","onBind");
+
         //최종위치 구하기 로직
         int pos;
         // 둘 다 있을 때

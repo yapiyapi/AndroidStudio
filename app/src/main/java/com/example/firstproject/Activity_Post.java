@@ -96,8 +96,8 @@ public class Activity_Post extends AppCompatActivity {
             public void onClick(View view) {
                 //완료 (게시하기)
                 if(완료.getText()!="수정"){
-                    if ( uri == null ) Toast.makeText(Activity_Post.this, "이미지를 추가 해주세요.", Toast.LENGTH_SHORT).show();
-                    else {
+//                    if ( uri == null ) Toast.makeText(Activity_Post.this, "이미지를 추가 해주세요.", Toast.LENGTH_SHORT).show();
+//                    else {
                         data.이미지_arr.add(0,uri);
                         data.제목_arr.add(0,제목.getText().toString());
                         data.위치_arr.add(0,위치.getText().toString());
@@ -126,7 +126,7 @@ public class Activity_Post extends AppCompatActivity {
                         //activity 종료
                         finish();
                     }
-                }
+//                }
                 //수정 (수정하기)
                 else{
                     data.이미지_arr.set(최종위치,uri);

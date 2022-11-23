@@ -57,14 +57,11 @@ public class Adapter_List_Sell extends RecyclerView.Adapter<Adapter_List_Sell.Cu
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View 뷰 = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell, parent,false);
-        Log.i("onCreateViewHolder","onCreateViewHolder");
         return new CustomViewHolder(뷰);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-
-        Log.i("onBind","onBind");
 
 ////        SharedPreferences 셰어드순서 = holder.itemView.getContext().getSharedPreferences("셰어드순서", MODE_PRIVATE);
 ////        int size = 셰어드순서.getInt("셰어드순서",0);
@@ -125,7 +122,6 @@ public class Adapter_List_Sell extends RecyclerView.Adapter<Adapter_List_Sell.Cu
                             if (menuItem.getItemId() == R.id.update_sell) {
                                 //Post activity로 이동
                                 Intent PostIntent = new Intent(view.getContext(), Activity_Post.class);
-                                PostIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 PostIntent.putExtra("식별부호", 식별부호_arr.get(true_위치));
                                 PostIntent.putExtra("판매상태", "판매중");
                                 view.getContext().startActivity(PostIntent);

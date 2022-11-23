@@ -46,13 +46,11 @@ public class Adapter_ListHart extends RecyclerView.Adapter<Adapter_ListHart.Cust
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View 뷰 = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell, parent,false);
-        Log.i("onCreateViewHolder","onCreateViewHolder");
         return new CustomViewHolder(뷰);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        Log.i("onBind","onBind");
 
         //위치 값 초기화 (관심여부복사본_arr)
         int true_위치 = 관심여부복사본_arr.indexOf(true);
@@ -85,6 +83,10 @@ public class Adapter_ListHart extends RecyclerView.Adapter<Adapter_ListHart.Cust
                 }
             });
         }else ;
+    }
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     @Override

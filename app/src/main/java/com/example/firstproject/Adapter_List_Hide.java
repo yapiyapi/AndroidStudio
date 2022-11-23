@@ -100,7 +100,6 @@ public class Adapter_List_Hide extends RecyclerView.Adapter<Adapter_List_Hide.Cu
                             if (menuItem.getItemId() == R.id.update_hide) {
                                 //Post activity로 이동
                                 Intent PostIntent = new Intent(view.getContext(), Activity_Post.class);
-                                PostIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 PostIntent.putExtra("식별부호", 식별부호_arr.get(true_위치));
                                 PostIntent.putExtra("판매상태", "숨김");
                                 view.getContext().startActivity(PostIntent);
@@ -142,6 +141,7 @@ public class Adapter_List_Hide extends RecyclerView.Adapter<Adapter_List_Hide.Cu
         }
         else ;
     }
+
     // 작성여부의 true 갯수 만큼 view 만듦
     @Override
     public int getItemCount() {

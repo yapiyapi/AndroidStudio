@@ -100,7 +100,6 @@ public class Adapter_List_SoldOut extends RecyclerView.Adapter<Adapter_List_Sold
                             if (menuItem.getItemId() == R.id.update_soldout) {
                                 //Post activity로 이동
                                 Intent PostIntent = new Intent(view.getContext(), Activity_Post.class);
-                                PostIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 PostIntent.putExtra("식별부호", 식별부호_arr.get(true_위치));
                                 PostIntent.putExtra("판매상태", "판매완료");
                                 view.getContext().startActivity(PostIntent);
